@@ -1,7 +1,7 @@
 @use '@/styles/variables' as vars;
 
 .title {
-  color: vars.$orange_light;
+  color: vars.$secondary-light;
   font-size: vars.$fz_xl;
   font-weight: 600;
 }
@@ -13,15 +13,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: vars.$gradient-primary;
+
 
   .text {
-    color: vars.$orange_dark;
+    color: vars.$secondary-dark;
     font-size: vars.$fz_xl;
     font-weight: 700;
   }
 
   .button {
-    background: vars.$orange_dark;
+    background: vars.$secondary-dark;
     color: white;
     font-size: vars.$fz_df;
     font-weight: 600;

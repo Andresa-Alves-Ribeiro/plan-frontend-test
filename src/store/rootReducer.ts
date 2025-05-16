@@ -1,5 +1,6 @@
-import { Count } from '@/store/modules'
+import appReducer from './slices/appSlice'
 
-export const rootReducer = {
-  test: Count.reducer,
-}
+export const rootReducer = ({
+  app: appReducer
+})
+

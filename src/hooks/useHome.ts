@@ -3,11 +3,10 @@ import { toast } from 'react-toastify'
 
 import { UserProps } from '@/@types'
 import { getUser } from '@/services'
-import { useAppDispatch, useAppSelector } from '@/store'
+import { useAppDispatch } from '@/store'
 
 const useHome = function () {
   const dispatch = useAppDispatch()
-  const count = useAppSelector((state) => state.test.count)
 
   const [user, setUser] = useState<UserProps>()
   const [showModal, setShowModal] = useState(false)
@@ -24,7 +23,6 @@ const useHome = function () {
   }
 
   return {
-    count,
     dispatch,
     user,
     showModal,
