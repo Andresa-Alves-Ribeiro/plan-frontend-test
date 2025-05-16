@@ -3,3 +3,42 @@
 :root {
   font-size: 16px;
 }
+
+// MUI Input styles
+.MuiOutlinedInput-root {
+  border-radius: 9999px !important;
+
+  .MuiOutlinedInput-notchedOutline {
+    border-width: 3px !important;
+    border-color: #FFFFFF !important;
+  }
+
+  &:hover {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #FFFFFF !important;
+    }
+  }
+
+  &.Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #FFFFFF !important;
+    }
+  }
+}
+
+.MuiFormControl-root {
+  width: 400px;
+}
+
+// Select specific styles
+.MuiSelect-select {
+  border-radius: 9999px !important;
+}
+
+.MuiSelect-outlined {
+  border-radius: 9999px !important;
+}
+
+.MuiSelect-icon {
+  color: #FFFFFF !important;
+}

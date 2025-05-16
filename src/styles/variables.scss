@@ -1,15 +1,79 @@
-//Variáveis de cores do projeto:
-$blue_light: #00afef;
-$blue_intermediate: #1d5a82;
-$blue_dark: #262642;
-$pink_light: #ec268f;
-$red_light: #e02023;
-$orange_light: #f5821f;
-$orange_dark: #db751b;
+// Sistema de cores do projeto
+// Cores principais
+$primary: #F5821F;
+$primary-dark: #DB751B;
+$primary-light: #FFD565;
 
-//Variáveis de tamanho das fontes do projeto: (fz = font-size)
+$secondary: #1D5A82;
+$secondary-dark: #262642;
+$secondary-light: #00AFEF;
+
+// Cores de suporte
+$accent: #EC268F;
+$danger: #E02023;
+$success: #28A745;
+$warning: #FFC107;
+$info: #17A2B8;
+
+// Tons de cinza
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #DEE2E6;
+$gray-400: #CED4DA;
+$gray-500: #ADB5BD;
+$gray-600: #6C757D;
+$gray-700: #495057;
+$gray-800: #343A40;
+$gray-900: #212529;
+
+// Cores de texto
+$text-primary: $gray-900;
+$text-secondary: $gray-700;
+$text-muted: $gray-600;
+$text-light: $gray-100;
+
+// Cores de fundo
+$bg-primary: #FFFFFF;
+$bg-secondary: $gray-100;
+$bg-dark: $gray-900;
+
+// Gradientes
+$gradient-primary: linear-gradient(240.88deg, $primary 0%, $primary-light 50.09%, $primary 99.78%);
+$gradient-secondary: linear-gradient(240.88deg, $secondary 0%, $secondary-light 50.09%, $secondary 99.78%);
+
+// Estados
+$hover-opacity: 0.8;
+$active-opacity: 0.9;
+$disabled-opacity: 0.5;
+
+// Sombras
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// Bordas
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-color: $gray-300;
+
+// Variáveis de tamanho das fontes do projeto: (fz = font-size)
 $fz_xs: 0.8125rem; // 13px
 $fz_sm: 0.9375rem; // 15px
 $fz_df: 1rem; // 16px
 $fz_lg: 1.25rem; // 20px
-$fz_xl: 2rem; // 20px
+$fz_xl: 2rem; // 32px
+
+// Espaçamentos
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
