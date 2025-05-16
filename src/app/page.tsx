@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { CardCountry } from '@/components/CardCountry'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { UserModal } from '@/components/UserModal'
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <Header />
       <main className={style.content}>
+        <CardCountry />
         <UserModal showModal={showModal} setShowModal={setShowModal} user={user} />
       </main>
       <Footer />
