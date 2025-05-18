@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 
 import { X } from 'lucide-react'
@@ -8,7 +9,7 @@ import { Modal } from '@/components/Modal'
 
 interface UserModalProps {
   showModal: boolean
-  setShowModal: () => void
+  setShowModal: (value: boolean) => void
   user: UserProps | undefined
 }
 
@@ -19,7 +20,7 @@ export function UserModal({ showModal, setShowModal, user }: UserModalProps) {
     <Modal.Root>
       <Modal.Header title="Usuário">
         <X
-          onClick={() => setShowModal()}
+          onClick={() => setShowModal(false)}
           color="white"
           className="ml-auto cursor-pointer"
         />

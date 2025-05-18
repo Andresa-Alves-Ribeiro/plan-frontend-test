@@ -1,0 +1,32 @@
+@use '@/styles/variables' as vars;
+
+.cardCountry {
+  background: #ffffff;
+  border-radius: vars.$border-radius-lg;
+  width: 320px;
+  height: 260px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 0 0 vars.$border-radius-lg vars.$border-radius-lg;
+    pointer-events: none;
+  }
+}
+
+.cardCountry__header {
+  background-color: #58595B;
+}
+
+.cardCountry__button {
+  background-color: #F58220;
+  width: 270px;
+  height: 47px;
+  position: absolute;
+  bottom: 20px;
+}
