@@ -47,8 +47,21 @@ export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCoun
   }, [countries])
 
   const filteredCountries = useMemo(() => {
+    // Criar um Set para rastrear países já incluídos
+    const includedCountries = new Set<string>()
+
     return countries.filter(country => {
-      const matchesSearch = country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+      // Se o país já foi incluído, pular
+      if (includedCountries.has(country.name.common)) {
+        return false
+      }
+
+      const searchTermLower = searchTerm.toLowerCase()
+      const matchesSearch =
+        country.name.common.toLowerCase().includes(searchTermLower) ||
+        country.name.official.toLowerCase().includes(searchTermLower) ||
+        (country.translations?.por?.common?.toLowerCase().includes(searchTermLower)) ||
+        (country.translations?.por?.official?.toLowerCase().includes(searchTermLower))
 
       // Mapear a região da API para o tipo Region
       const apiRegion = country.region
@@ -137,7 +150,14 @@ export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCoun
       const matchesLanguage = !selectedLanguage ||
         Object.keys(country.languages || {}).includes(apiLanguageCode)
 
-      return matchesSearch && matchesRegion && matchesLanguage
+      const shouldInclude = matchesSearch && matchesRegion && matchesLanguage
+
+      // Se o país deve ser incluído, adicionar ao Set
+      if (shouldInclude) {
+        includedCountries.add(country.name.common)
+      }
+
+      return shouldInclude
     })
   }, [countries, searchTerm, selectedRegions, selectedLanguage])
 

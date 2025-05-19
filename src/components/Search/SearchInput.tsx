@@ -5,16 +5,25 @@ import SearchRounded from '@mui/icons-material/SearchRounded'
 import { TextField, InputAdornment, IconButton } from '@mui/material'
 
 import { outlinedInputStyles } from '../../styles/muiStyles'
+import { validateSearchTerm } from '../../validations/searchValidations'
 
 interface SearchInputProps {
   onSearch: (term: string) => void
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('')
+  const [localSearchTerm, setLocalSearchTerm] = useState('')
+  const [error, setError] = useState<string | null>(null)
 
   const handleSearch = () => {
-    onSearch(searchTerm)
+    const validation = validateSearchTerm(localSearchTerm)
+
+    if (validation.isValid && validation.data) {
+      setError(null)
+      onSearch(validation.data.searchTerm)
+    } else {
+      setError(validation.error)
+    }
   }
 
   return (
@@ -22,13 +31,18 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
       placeholder='Informe o país que deseja conhecer...'
       variant='outlined'
       fullWidth
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
+      value={localSearchTerm}
+      onChange={(e) => {
+        setLocalSearchTerm(e.target.value)
+        setError(null)
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
           handleSearch()
         }
       }}
+      error={!!error}
+      helperText={error}
       slotProps={{
         input: {
           endAdornment: (

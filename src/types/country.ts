@@ -3,6 +3,12 @@ export interface Country {
         common: string
         official: string
     }
+    translations: {
+        por: {
+            common: string
+            official: string
+        }
+    }
     population: number
     region: string
     capital: string[]
@@ -15,4 +21,4 @@ export interface Country {
         name: string
         symbol: string
     }>
-} 
+}

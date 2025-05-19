@@ -17,37 +17,37 @@ function HomeContent() {
 
   if (loading) {
     return (
-      <>
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex flex-col items-center justify-center py-4">
+        <main className="flex-1 flex flex-col items-center justify-center py-4">
           <LoadingSpinner />
         </main>
         <Footer />
-      </>
+      </div>
     )
   }
 
   if (error) {
     return (
-      <>
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex flex-col items-center justify-center py-4">
+        <main className="flex-1 flex flex-col items-center justify-center py-4">
           <ErrorMessage message={error} />
         </main>
         <Footer />
-      </>
+      </div>
     )
   }
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex flex-col items-center justify-center py-4">
+      <main className="flex-1 flex flex-col items-center justify-center py-4">
         <CountryGrid countries={filteredCountries} />
       </main>
       <UserModal showModal={showModal} setShowModal={setShowModal} user={user} />
       <Footer />
-    </>
+    </div>
   )
 }
 
