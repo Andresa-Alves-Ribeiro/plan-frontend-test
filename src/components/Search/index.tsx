@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { FormGroup } from '@mui/material'
 
-import { regionTranslations } from '../../../types/continent'
+import { useCountriesContext } from '../../contexts/CountriesContext'
+import { regionTranslations } from '../../types/continent'
 import { LanguageSelect } from './LanguageSelect'
 import { RegionCheckbox } from './RegionCheckbox'
 import { SearchInput } from './SearchInput'
 import { Region } from './types'
 
 export const SearchBar: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('')
-  const [selectedRegions, setSelectedRegions] = useState<Region[]>([])
+  const { selectedLanguage, setSelectedLanguage, selectedRegions, setSelectedRegions, setSearchTerm } = useCountriesContext()
 
   const handleRegionChange = (region: Region) => {
     setSelectedRegions(prev =>
@@ -23,7 +23,7 @@ export const SearchBar: React.FC = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
-        <SearchInput />
+        <SearchInput onSearch={setSearchTerm} />
         <LanguageSelect
           value={selectedLanguage}
           onChange={setSelectedLanguage}

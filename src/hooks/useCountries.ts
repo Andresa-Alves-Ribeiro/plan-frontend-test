@@ -1,17 +1,20 @@
 import { useState, useEffect, useMemo } from 'react'
 
+import { Region } from '../components/Search/types'
 import { Country, countriesService } from '../services/countries'
+import { regionTranslations, northAmericanCountries } from '../types/continent'
 
 interface UseCountriesParams {
   selectedLanguage?: string;
 }
 
-export const useCountries = ({ selectedLanguage = '' }: UseCountriesParams = {}) => {
+export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCountriesParams = {}) => {
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedRegions, setSelectedRegions] = useState<string[]>([])
+  const [selectedRegions, setSelectedRegions] = useState<Region[]>([])
+  const [selectedLanguage, setSelectedLanguage] = useState(initialLanguage)
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -46,7 +49,24 @@ export const useCountries = ({ selectedLanguage = '' }: UseCountriesParams = {})
   const filteredCountries = useMemo(() => {
     return countries.filter(country => {
       const matchesSearch = country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-      const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(country.region)
+
+      // Mapear a região da API para o tipo Region
+      const apiRegion = country.region
+      let mappedRegion: Region | undefined
+
+      if (apiRegion === 'Americas') {
+        // Se for um país das Américas, determinar se é América do Norte ou do Sul
+        mappedRegion = northAmericanCountries.includes(country.name.common)
+          ? 'North America'
+          : 'South America'
+      } else {
+        // Para outras regiões, usar o mapeamento direto
+        mappedRegion = Object.keys(regionTranslations).find(
+          key => key === apiRegion
+        ) as Region
+      }
+
+      const matchesRegion = selectedRegions.length === 0 || (mappedRegion && selectedRegions.includes(mappedRegion))
 
       // Map the selected language code to the API's language code
       const languageCodeMap: { [key: string]: string } = {
@@ -131,5 +151,7 @@ export const useCountries = ({ selectedLanguage = '' }: UseCountriesParams = {})
     setSelectedRegions,
     regions,
     languages,
+    selectedLanguage,
+    setSelectedLanguage
   }
 }

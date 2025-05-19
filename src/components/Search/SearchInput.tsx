@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
 import SearchRounded from '@mui/icons-material/SearchRounded'
@@ -5,18 +6,21 @@ import { TextField, InputAdornment, IconButton } from '@mui/material'
 
 import { outlinedInputStyles } from '../../styles/muiStyles'
 
-export const SearchInput = () => {
+interface SearchInputProps {
+  onSearch: (term: string) => void
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('')
 
   const handleSearch = () => {
-    // TODO: Implementar a função de busca
-    console.log('Procurando por:', searchTerm)
+    onSearch(searchTerm)
   }
 
   return (
     <TextField
-      placeholder="Informe o país que deseja conhecer..."
-      variant="outlined"
+      placeholder='Informe o país que deseja conhecer...'
+      variant='outlined'
       fullWidth
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
@@ -28,7 +32,7 @@ export const SearchInput = () => {
       slotProps={{
         input: {
           endAdornment: (
-            <InputAdornment position="end">
+            <InputAdornment position='end'>
               <IconButton onClick={handleSearch} sx={{ color: '#FFFFFF', width: '20px', height: '20px' }}>
                 <SearchRounded sx={{ transform: 'rotate(90deg)' }} />
               </IconButton>
