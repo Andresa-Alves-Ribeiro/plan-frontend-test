@@ -4,10 +4,11 @@ import Image from 'next/image'
 
 import { FormGroup } from '@mui/material'
 
+import { regionTranslations } from '../../types/continent'
 import { LanguageSelect } from '../Search/LanguageSelect'
 import { RegionCheckbox } from '../Search/RegionCheckbox'
 import { SearchInput } from '../Search/SearchInput'
-import { REGIONS, Region } from '../Search/types'
+import { Region } from '../Search/types'
 
 export const Header: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('')
@@ -35,11 +36,11 @@ export const Header: React.FC = () => {
           </div>
 
           <FormGroup row sx={{ gap: 2 }}>
-            {REGIONS.map((region) => (
+            {Object.entries(regionTranslations).map(([region]) => (
               <RegionCheckbox
                 key={region}
-                region={region}
-                checked={selectedRegions.includes(region)}
+                region={region as Region}
+                checked={selectedRegions.includes(region as Region)}
                 onChange={handleRegionChange}
               />
             ))}
