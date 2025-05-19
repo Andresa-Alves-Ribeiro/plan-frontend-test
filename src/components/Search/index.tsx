@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { FormGroup } from '@mui/material'
+import ClearAllRounded from '@mui/icons-material/ClearAllRounded'
+import { FormGroup, Button } from '@mui/material'
 
 import { useCountriesContext } from '../../contexts/CountriesContext'
 import { regionTranslations } from '../../types/continent'
@@ -20,6 +21,12 @@ export const SearchBar: React.FC = () => {
     )
   }
 
+  const handleClearFilters = () => {
+    setSearchTerm('')
+    setSelectedLanguage('')
+    setSelectedRegions([])
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
@@ -28,6 +35,21 @@ export const SearchBar: React.FC = () => {
           value={selectedLanguage}
           onChange={setSelectedLanguage}
         />
+        <Button
+          variant="outlined"
+          startIcon={<ClearAllRounded />}
+          onClick={handleClearFilters}
+          sx={{
+            color: '#FFFFFF',
+            borderColor: '#FFFFFF',
+            '&:hover': {
+              borderColor: '#FFFFFF',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }
+          }}
+        >
+          Limpar Filtros
+        </Button>
       </div>
 
       <FormGroup row sx={{ gap: 2 }}>
