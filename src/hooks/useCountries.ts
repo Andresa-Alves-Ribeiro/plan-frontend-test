@@ -47,12 +47,12 @@ export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCoun
   }, [countries])
 
   const filteredCountries = useMemo(() => {
-    // Criar um Set para rastrear países já incluídos
-    const includedCountries = new Set<string>()
+    // Create a Set to track unique countries
+    const uniqueCountries = new Set<string>()
 
     return countries.filter(country => {
-      // Se o país já foi incluído, pular
-      if (includedCountries.has(country.name.common)) {
+      // Skip if we've already included this country
+      if (uniqueCountries.has(country.name.common)) {
         return false
       }
 
@@ -63,17 +63,17 @@ export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCoun
         (country.translations?.por?.common?.toLowerCase().includes(searchTermLower)) ||
         (country.translations?.por?.official?.toLowerCase().includes(searchTermLower))
 
-      // Mapear a região da API para o tipo Region
+      // Map the API region to Region type
       const apiRegion = country.region
       let mappedRegion: Region | undefined
 
       if (apiRegion === 'Americas') {
-        // Se for um país das Américas, determinar se é América do Norte ou do Sul
+        // If it's an Americas country, determine if it's North or South America
         mappedRegion = northAmericanCountries.includes(country.name.common)
           ? 'North America'
           : 'South America'
       } else {
-        // Para outras regiões, usar o mapeamento direto
+        // For other regions, use direct mapping
         mappedRegion = Object.keys(regionTranslations).find(
           key => key === apiRegion
         ) as Region
@@ -152,9 +152,9 @@ export const useCountries = ({ selectedLanguage: initialLanguage = '' }: UseCoun
 
       const shouldInclude = matchesSearch && matchesRegion && matchesLanguage
 
-      // Se o país deve ser incluído, adicionar ao Set
+      // If the country should be included, add it to the Set
       if (shouldInclude) {
-        includedCountries.add(country.name.common)
+        uniqueCountries.add(country.name.common)
       }
 
       return shouldInclude
