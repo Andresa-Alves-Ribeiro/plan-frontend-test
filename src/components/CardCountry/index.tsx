@@ -30,7 +30,7 @@ export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
         <Image
           src={getContinentImage(country.region, country.name.common)}
           alt={`Imagem do continente ${displayRegion}`}
-          width={29}
+          width={28}
           height={36}
         />
       </div>
@@ -42,7 +42,7 @@ export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
             alt={`Bandeira de ${countryName}`}
             width={29}
             height={36}
-            className="w-[29px] h-[36px]"
+            className="w-[29px] h-[36px] object-contain"
           />
           <h3 className="text-neutral-500 font-bold text-2xl truncate max-w-[200px] text-center">{countryName}</h3>
         </div>
