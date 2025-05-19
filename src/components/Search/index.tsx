@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 
 import { FormGroup } from '@mui/material'
 
+import { regionTranslations } from '../../../types/continent'
 import { LanguageSelect } from './LanguageSelect'
 import { RegionCheckbox } from './RegionCheckbox'
 import { SearchInput } from './SearchInput'
-import { REGIONS, Region } from './types'
+import { Region } from './types'
 
 export const SearchBar: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('')
@@ -30,11 +31,11 @@ export const SearchBar: React.FC = () => {
       </div>
 
       <FormGroup row sx={{ gap: 2 }}>
-        {REGIONS.map((region) => (
+        {Object.entries(regionTranslations).map(([region]) => (
           <RegionCheckbox
             key={region}
-            region={region}
-            checked={selectedRegions.includes(region)}
+            region={region as Region}
+            checked={selectedRegions.includes(region as Region)}
             onChange={handleRegionChange}
           />
         ))}

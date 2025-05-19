@@ -4,7 +4,7 @@ import React from 'react'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 import { languageSelectStyles } from '../../styles/muiStyles'
-import { LANGUAGES } from './types'
+import { LANGUAGES } from './constants'
 
 interface LanguageSelectProps {
   value: string;
@@ -14,10 +14,10 @@ interface LanguageSelectProps {
 export const LanguageSelect = ({ value, onChange }: LanguageSelectProps) => {
   return (
     <FormControl>
-      <InputLabel id="language-select-label">Selecione o idioma</InputLabel>
+      <InputLabel id="language-select-label">Idioma</InputLabel>
       <Select
         labelId="language-select-label"
-        label="Selecione o idioma"
+        label="Idioma"
         value={value}
         onChange={(event) => onChange(event.target.value as string)}
         variant="outlined"
