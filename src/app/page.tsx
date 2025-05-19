@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import { CountryGrid } from '@/components/Countries/CountryGrid'
 import { ErrorMessage } from '@/components/Feedback/ErrorMessage'
@@ -13,12 +13,13 @@ import { useCountries } from '@/hooks/useCountries'
 
 export default function Home() {
   const { user, showModal, setShowModal } = useHome()
-  const { countries, loading, error } = useCountries()
+  const [selectedLanguage, setSelectedLanguage] = useState('')
+  const { countries, loading, error } = useCountries({ selectedLanguage })
 
   if (loading) {
     return (
       <>
-        <Header />
+        <Header selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} />
         <main className="flex flex-col items-center justify-center py-4">
           <LoadingSpinner />
         </main>
@@ -30,7 +31,7 @@ export default function Home() {
   if (error) {
     return (
       <>
-        <Header />
+        <Header selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} />
         <main className="flex flex-col items-center justify-center py-4">
           <ErrorMessage message={error} />
         </main>
@@ -41,7 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} />
       <main className="flex flex-col items-center justify-center py-4">
         <CountryGrid countries={countries} />
       </main>

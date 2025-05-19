@@ -2,13 +2,16 @@ import { useState, useEffect, useMemo } from 'react'
 
 import { Country, countriesService } from '../services/countries'
 
-export const useCountries = () => {
+interface UseCountriesParams {
+  selectedLanguage?: string;
+}
+
+export const useCountries = ({ selectedLanguage = '' }: UseCountriesParams = {}) => {
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegions, setSelectedRegions] = useState<string[]>([])
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('')
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -44,8 +47,75 @@ export const useCountries = () => {
     return countries.filter(country => {
       const matchesSearch = country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(country.region)
+
+      // Map the selected language code to the API's language code
+      const languageCodeMap: { [key: string]: string } = {
+        'en': 'eng',
+        'es': 'spa',
+        'pt': 'por',
+        'fr': 'fra',
+        'de': 'deu',
+        'it': 'ita',
+        'ru': 'rus',
+        'zh': 'zho',
+        'ja': 'jpn',
+        'ko': 'kor',
+        'ar': 'ara',
+        'hi': 'hin',
+        'bn': 'ben',
+        'tr': 'tur',
+        'nl': 'nld',
+        'sv': 'swe',
+        'pl': 'pol',
+        'vi': 'vie',
+        'th': 'tha',
+        'id': 'ind',
+        'ms': 'msa',
+        'fa': 'fas',
+        'he': 'heb',
+        'el': 'ell',
+        'cs': 'ces',
+        'da': 'dan',
+        'fi': 'fin',
+        'hu': 'hun',
+        'no': 'nob',
+        'ro': 'ron',
+        'sk': 'slk',
+        'uk': 'ukr',
+        'bg': 'bul',
+        'hr': 'hrv',
+        'ca': 'cat',
+        'et': 'est',
+        'gl': 'glg',
+        'is': 'isl',
+        'lv': 'lav',
+        'lt': 'lit',
+        'sl': 'slv',
+        'sr': 'srp',
+        'ta': 'tam',
+        'te': 'tel',
+        'ur': 'urd',
+        'cy': 'cym',
+        'eu': 'eus',
+        'ga': 'gle',
+        'gu': 'guj',
+        'ha': 'hau',
+        'kn': 'kan',
+        'km': 'khm',
+        'lo': 'lao',
+        'ml': 'mal',
+        'mr': 'mar',
+        'ne': 'nep',
+        'pa': 'pan',
+        'si': 'sin',
+        'sw': 'swa',
+        'yo': 'yor',
+        'zu': 'zul'
+      }
+
+      const apiLanguageCode = languageCodeMap[selectedLanguage] || selectedLanguage
       const matchesLanguage = !selectedLanguage ||
-        Object.values(country.languages || {}).includes(selectedLanguage)
+        Object.keys(country.languages || {}).includes(apiLanguageCode)
 
       return matchesSearch && matchesRegion && matchesLanguage
     })
@@ -59,8 +129,6 @@ export const useCountries = () => {
     setSearchTerm,
     selectedRegions,
     setSelectedRegions,
-    selectedLanguage,
-    setSelectedLanguage,
     regions,
     languages,
   }

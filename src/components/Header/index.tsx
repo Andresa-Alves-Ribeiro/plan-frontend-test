@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
 import Image from 'next/image'
@@ -10,8 +11,12 @@ import { RegionCheckbox } from '../Search/RegionCheckbox'
 import { SearchInput } from '../Search/SearchInput'
 import { Region } from '../Search/types'
 
-export const Header: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('')
+interface HeaderProps {
+  selectedLanguage: string;
+  setSelectedLanguage: (lang: string) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ selectedLanguage, setSelectedLanguage }) => {
   const [selectedRegions, setSelectedRegions] = useState<Region[]>([])
 
   const handleRegionChange = (region: Region) => {
