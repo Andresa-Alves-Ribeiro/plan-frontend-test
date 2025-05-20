@@ -19,9 +19,15 @@ export const LanguageSelect = ({ value, onChange }: LanguageSelectProps) => {
         labelId="language-select-label"
         label="Idioma"
         value={value}
-        onChange={(event) => onChange(event.target.value as string)}
+        onChange={(event) => onChange(event.target.value)}
         variant="outlined"
         MenuProps={languageSelectStyles}
+        sx={{
+          cursor: 'pointer',
+          '& .MuiSelect-select': {
+            cursor: 'pointer'
+          }
+        }}
       >
         {LANGUAGES.map((language) => (
           <MenuItem key={language.code} value={language.code}>

@@ -1,4 +1,4 @@
-@use '@/styles/variables' as vars;
+@use '../../styles/variables' as vars;
 
 .cardCountry {
   background: #ffffff;
@@ -21,6 +21,7 @@
 
 .cardCountry__header {
   background-color: #58595B;
+  height: 50px;
 }
 
 .cardCountry__button {

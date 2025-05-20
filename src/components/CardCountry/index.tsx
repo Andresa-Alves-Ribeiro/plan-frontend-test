@@ -2,6 +2,7 @@ import React from 'react'
 
 import Image from 'next/image'
 
+import { Button } from '@/components/Button'
 import { Country } from '@/services/countries'
 import { getContinentImage, getDisplayRegion } from '@/utils/continentMappings'
 
@@ -18,36 +19,38 @@ export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
   return (
     <div className={`${styles.cardCountry} flex flex-col items-center justify-center relative`}>
       <div className={`${styles.cardCountry__header} absolute top-0 left-0 flex items-center justify-between w-full py-2 px-3 rounded-t-2xl z-10`}>
-        <h3 className="text-white italic font-bold text-md">{displayRegion}</h3>
+        <div className="flex flex-col">
+          <h3 className="text-white italic font-bold text-md">{displayRegion}</h3>
+        </div>
         <Image
           src={getContinentImage(country.region, country.name.common)}
           alt={`Imagem do continente ${displayRegion}`}
-          width={29}
+          width={28}
           height={36}
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center w-full gap-1">
+      <div className="flex flex-col items-center justify-center w-full gap-1 pt-10">
         <div className="flex flex-col items-center justify-center">
           <Image
             src={country.flags.svg}
             alt={`Bandeira de ${countryName}`}
             width={29}
             height={36}
-            className="w-[29px] h-[36px]"
+            className="w-[29px] h-[36px] object-contain"
           />
           <h3 className="text-neutral-500 font-bold text-2xl truncate max-w-[200px] text-center">{countryName}</h3>
         </div>
 
         <div className="flex items-center justify-center w-full gap-2">
           <Image src="/img/CAPITAL ICON.svg" alt="Capital do País" width={20} height={20} />
-          <p className="text-neutral-500 font-bold text-lg">{country.capital?.[0] || 'N/A'}</p>
+          <p className="text-neutral-500 font-bold text-lg">{country.capital?.[0] ? country.capital?.[0] : 'N/A'}</p>
         </div>
       </div>
 
-      <button className={`${styles.cardCountry__button} text-white font-bold text-sm italic rounded-full px-4 py-2`}>
+      <Button href={`/country/${country.name.common}`}>
         Ver mais
-      </button>
+      </Button>
     </div>
   )
 }

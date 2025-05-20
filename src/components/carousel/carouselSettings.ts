@@ -5,16 +5,12 @@ export const getCarouselSettings = () => ({
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: true,
-  rows: 2,
-  slidesPerRow: 1,
   responsive: [
     {
       breakpoint: 1200,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        rows: 2,
-        slidesPerRow: 1,
       }
     },
     {
@@ -22,8 +18,6 @@ export const getCarouselSettings = () => ({
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        rows: 2,
-        slidesPerRow: 1,
       }
     },
     {
@@ -31,8 +25,6 @@ export const getCarouselSettings = () => ({
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        rows: 1,
-        slidesPerRow: 1,
       }
     }
   ]

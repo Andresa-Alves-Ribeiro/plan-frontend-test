@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { FormGroup } from '@mui/material'
+import ClearAllRounded from '@mui/icons-material/ClearAllRounded'
+import { FormGroup, Button } from '@mui/material'
 
-import { regionTranslations } from '../../../types/continent'
+import { useCountriesContext } from '../../contexts/CountriesContext'
+import { regionTranslations } from '../../types/continent'
 import { LanguageSelect } from './LanguageSelect'
 import { RegionCheckbox } from './RegionCheckbox'
 import { SearchInput } from './SearchInput'
 import { Region } from './types'
 
 export const SearchBar: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('')
-  const [selectedRegions, setSelectedRegions] = useState<Region[]>([])
+  const { selectedLanguage, setSelectedLanguage, selectedRegions, setSelectedRegions, setSearchTerm } = useCountriesContext()
 
   const handleRegionChange = (region: Region) => {
     setSelectedRegions(prev =>
@@ -20,14 +21,35 @@ export const SearchBar: React.FC = () => {
     )
   }
 
+  const handleClearFilters = () => {
+    setSearchTerm('')
+    setSelectedLanguage('')
+    setSelectedRegions([])
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
-        <SearchInput />
+        <SearchInput onSearch={setSearchTerm} />
         <LanguageSelect
           value={selectedLanguage}
           onChange={setSelectedLanguage}
         />
+        <Button
+          variant="outlined"
+          startIcon={<ClearAllRounded />}
+          onClick={handleClearFilters}
+          sx={{
+            color: '#FFFFFF',
+            borderColor: '#FFFFFF',
+            '&:hover': {
+              borderColor: '#FFFFFF',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }
+          }}
+        >
+          Limpar Filtros
+        </Button>
       </div>
 
       <FormGroup row sx={{ gap: 2 }}>
