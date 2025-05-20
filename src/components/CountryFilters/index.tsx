@@ -7,6 +7,7 @@ import { FormGroup, Button, IconButton, Drawer, Box, Typography } from '@mui/mat
 
 import { useCountriesContext } from '../../contexts/CountriesContext'
 import { regionTranslations } from '../../types/continent'
+import { ConfirmDialog } from './ConfirmDialog'
 import { LanguageSelect } from './LanguageSelect'
 import { RegionCheckbox } from './RegionCheckbox'
 import { SearchInput } from './SearchInput'
@@ -91,7 +92,7 @@ const MobileFilterContent = ({
     >
       Limpar Filtros
     </Button>
-  </div>
+  </div >
 )
 
 const DesktopFilterContent = ({
@@ -136,6 +137,7 @@ const DesktopFilterContent = ({
 export const SearchBar = (): JSX.Element => {
   const { selectedLanguage, setSelectedLanguage, selectedRegions, setSelectedRegions, setSearchTerm } = useCountriesContext()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
 
   const handleRegionChange = useCallback((region: Region) => {
     setSelectedRegions(prev =>
@@ -145,11 +147,16 @@ export const SearchBar = (): JSX.Element => {
     )
   }, [setSelectedRegions])
 
-  const handleClearFilters = useCallback(() => {
+  const clearFilters = useCallback(() => {
     setSearchTerm('')
     setSelectedLanguage('')
     setSelectedRegions([])
+    setIsConfirmDialogOpen(false)
   }, [setSearchTerm, setSelectedLanguage, setSelectedRegions])
+
+  const handleClearFilters = useCallback(() => {
+    setIsConfirmDialogOpen(true)
+  }, [])
 
   const toggleDrawer = useCallback(() => {
     setIsDrawerOpen(prev => !prev)
@@ -233,6 +240,14 @@ export const SearchBar = (): JSX.Element => {
           </Box>
         </Drawer>
       </div>
+
+      <ConfirmDialog
+        open={isConfirmDialogOpen}
+        onClose={() => setIsConfirmDialogOpen(false)}
+        onConfirm={clearFilters}
+        title="Limpar Filtros"
+        message="Tem certeza que deseja limpar todos os filtros?"
+      />
     </>
   )
 }

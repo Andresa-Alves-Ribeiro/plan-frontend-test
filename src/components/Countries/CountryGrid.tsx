@@ -94,12 +94,17 @@ export const CountryGrid = ({ countries }: CountryGridProps) => {
     )
   }
 
+  // Ordena os países por nome
+  const sortedCountries = [...countries].sort((a, b) =>
+    a.name.common.localeCompare(b.name.common)
+  )
+
   // Cria slides com número de cards baseado no tamanho da tela
   const slides = []
   const itemsPerSlide = width < 640 ? 1 : width < 1024 ? 2 : 4
 
-  for (let i = 0; i < countries.length; i += itemsPerSlide) {
-    const slideCountries = countries.slice(i, i + itemsPerSlide)
+  for (let i = 0; i < sortedCountries.length; i += itemsPerSlide) {
+    const slideCountries = sortedCountries.slice(i, i + itemsPerSlide)
     if (slideCountries.length > 0) {
       slides.push(slideCountries)
     }

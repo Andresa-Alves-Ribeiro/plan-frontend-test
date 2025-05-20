@@ -74,7 +74,7 @@
   background: transparent !important;
   border: 3px solid white !important;
   border-radius: 20px !important;
-  cursor: pointer;
+  cursor: pointer !important;
   z-index: 1;
 }
 
@@ -87,6 +87,7 @@
 .slick-next svg {
   width: 20px;
   height: 20px;
+  cursor: pointer !important;
 }
 
 .slick-prev {
