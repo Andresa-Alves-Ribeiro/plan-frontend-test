@@ -41,7 +41,7 @@ textarea,
 input[type="text"],
 input[type="search"],
 textarea,
-.MuiInputBase-input {
+.MuiInputBase-input:not(.MuiSelect-select) {
   cursor: text !important;
 }
 
@@ -69,7 +69,7 @@ header {
   input[type="text"],
   input[type="search"],
   textarea,
-  .MuiInputBase-input {
+  .MuiInputBase-input:not(.MuiSelect-select) {
     cursor: text !important;
   }
 }

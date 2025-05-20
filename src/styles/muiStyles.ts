@@ -26,6 +26,7 @@ export const languageSelectStyles = {
       backgroundColor: '#F58220',
       '& .MuiMenuItem-root': {
         color: 'white',
+        cursor: 'pointer',
         '&:hover': {
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
         },
@@ -46,5 +47,11 @@ export const languageSelectStyles = {
         background: '#F58220',
       }
     },
+  },
+  sx: {
+    cursor: 'pointer',
+    '& .MuiSelect-select': {
+      cursor: 'pointer'
+    }
   }
 }
