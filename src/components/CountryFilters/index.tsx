@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo, JSX } from 'react'
 
 import ClearAllRounded from '@mui/icons-material/ClearAllRounded'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -39,14 +39,14 @@ interface FilterContentProps {
   setSearchTerm: (term: string) => void
 }
 
-const MobileFilterContent: React.FC<FilterContentProps> = ({
+const MobileFilterContent = ({
   selectedLanguage,
   setSelectedLanguage,
   selectedRegions,
   handleRegionChange,
   handleClearFilters,
   setSearchTerm
-}) => (
+}: FilterContentProps): JSX.Element => (
   <div className="flex flex-col gap-6">
     <div className="flex flex-col gap-4">
       <Typography variant="h6" sx={commonTypographyStyles}>
@@ -94,14 +94,14 @@ const MobileFilterContent: React.FC<FilterContentProps> = ({
   </div>
 )
 
-const DesktopFilterContent: React.FC<FilterContentProps> = ({
+const DesktopFilterContent = ({
   selectedLanguage,
   setSelectedLanguage,
   selectedRegions,
   handleRegionChange,
   handleClearFilters,
   setSearchTerm
-}) => (
+}: FilterContentProps): JSX.Element => (
   <div className="flex flex-col gap-4 items-center">
     <div className="flex gap-4 items-center justify-center">
       <SearchInput onSearch={setSearchTerm} />
@@ -133,7 +133,7 @@ const DesktopFilterContent: React.FC<FilterContentProps> = ({
   </div>
 )
 
-export const SearchBar: React.FC = () => {
+export const SearchBar = (): JSX.Element => {
   const { selectedLanguage, setSelectedLanguage, selectedRegions, setSelectedRegions, setSearchTerm } = useCountriesContext()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
