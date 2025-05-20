@@ -20,6 +20,60 @@
   font-family: 'Exo';
 }
 
+// Reset cursor for all elements
+body * {
+  cursor: default;
+}
+
+// Add cursor pointer for interactive elements
+button,
+a,
+[role="button"],
+input,
+select,
+textarea,
+.MuiButtonBase-root,
+.MuiIconButton-root {
+  cursor: pointer !important;
+}
+
+// Only show text cursor in actual input fields
+input[type="text"],
+input[type="search"],
+textarea,
+.MuiInputBase-input {
+  cursor: text !important;
+}
+
+// Ensure header elements don't show text cursor
+header {
+  cursor: default !important;
+
+  * {
+    cursor: default !important;
+  }
+
+  // Override for interactive elements in header
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  .MuiButtonBase-root,
+  .MuiIconButton-root {
+    cursor: pointer !important;
+  }
+
+  // Override for input fields in header
+  input[type="text"],
+  input[type="search"],
+  textarea,
+  .MuiInputBase-input {
+    cursor: text !important;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -63,4 +117,16 @@ body {
 
 .MuiSelect-icon {
   color: #FFFFFF !important;
+}
+
+// Prevent text cursor on checkbox labels
+.MuiFormControlLabel-root,
+.MuiFormControlLabel-label {
+  cursor: pointer !important;
+  user-select: none;
+}
+
+// Ensure checkbox itself shows pointer cursor
+.MuiCheckbox-root {
+  cursor: pointer !important;
 }

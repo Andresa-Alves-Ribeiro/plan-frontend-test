@@ -36,7 +36,7 @@ export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center w-full gap-1">
+      <div className="flex flex-col items-center justify-center w-full gap-1 pt-10">
         <div className="flex flex-col items-center justify-center">
           <Image
             src={country.flags.svg}
