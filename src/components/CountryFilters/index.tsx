@@ -180,12 +180,12 @@ export const SearchBar = (): JSX.Element => {
   return (
     <>
       {/* Desktop View */}
-      <div className="hidden md:block" role="search">
+      <div className="hidden lg:block" role="search">
         {desktopFilterContent}
       </div>
 
       {/* Mobile/Tablet View */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <IconButton
           onClick={toggleDrawer}
           sx={{
@@ -213,7 +213,11 @@ export const SearchBar = (): JSX.Element => {
                 color: '#FFFFFF',
                 padding: DRAWER_PADDING,
                 width: DRAWER_WIDTH,
-                maxWidth: DRAWER_MAX_WIDTH,
+                maxWidth: {
+                  xs: DRAWER_MAX_WIDTH,
+                  sm: '400px',
+                  md: '500px'
+                },
                 '& .MuiFormControl-root': {
                   width: '100%'
                 },
