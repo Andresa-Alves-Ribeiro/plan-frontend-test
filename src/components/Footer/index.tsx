@@ -2,7 +2,7 @@ import React from 'react'
 
 import Image from 'next/image'
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
   return (
     <footer className="w-full bg-black z-50">
       <div className="max-w-7xl mx-auto px-4 py-6 md:py-4">

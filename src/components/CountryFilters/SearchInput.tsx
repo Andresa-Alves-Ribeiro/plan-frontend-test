@@ -11,7 +11,7 @@ interface SearchInputProps {
   onSearch: (term: string) => void
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
+export const SearchInput = ({ onSearch }: SearchInputProps) => {
   const [localSearchTerm, setLocalSearchTerm] = useState('')
   const [error, setError] = useState<string | null>(null)
 

@@ -17,41 +17,54 @@ export const outlinedInputStyles = {
   '& .MuiInputBase-input::placeholder': {
     color: 'rgba(0, 0, 0, 0.7)',
     opacity: 1,
+  },
+  '& .MuiSelect-select': {
+    color: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    '&:focus': {
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    }
   }
 }
 
 export const languageSelectStyles = {
   PaperProps: {
     sx: {
-      backgroundColor: '#F58220',
+      backgroundColor: '#FFFFFF',
+      zIndex: 1500,
       '& .MuiMenuItem-root': {
-        color: 'white',
+        color: '#F58220',
         cursor: 'pointer',
         '&:hover': {
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(245, 130, 32, 0.1)',
         },
       },
       '&::-webkit-scrollbar': {
         width: '8px',
       },
       '&::-webkit-scrollbar-track': {
-        background: '#F58220',
+        background: '#FFFFFF',
       },
       '&::-webkit-scrollbar-thumb': {
-        background: 'rgba(255, 255, 255, 0.5)',
+        background: 'rgba(245, 130, 32, 0.5)',
         borderRadius: '4px',
       },
       '&::-webkit-scrollbar-button': {
         display: 'block',
         height: '8px',
-        background: '#F58220',
+        background: '#FFFFFF',
       }
     },
   },
   sx: {
     cursor: 'pointer',
     '& .MuiSelect-select': {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: '#FFFFFF',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      '&:focus': {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      }
     }
   }
 }
