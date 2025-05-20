@@ -1,0 +1,12 @@
+@use '@/styles/variables' as vars;
+
+
+.cardCountry__button {
+  background-color: vars.$primary;
+  width: 270px;
+  height: 47px;
+}
+
+.cardCountry__button:hover {
+  background-color: vars.$primary-dark;
+}

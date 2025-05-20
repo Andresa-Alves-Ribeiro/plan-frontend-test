@@ -1,0 +1,86 @@
+@use '@/styles/variables' as vars;
+
+.card {
+  background: #ffffff;
+  border-radius: vars.$border-radius-lg;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 567px;
+  box-shadow: vars.$shadow-lg;
+  position: relative;
+  overflow: hidden;
+  margin: 0 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 0 0 vars.$border-radius-lg vars.$border-radius-lg;
+    pointer-events: none;
+  }
+}
+
+.header {
+  background-color: vars.$secondary;
+  padding: vars.$spacing-sm vars.$spacing-md;
+}
+
+.content {
+  padding: vars.$spacing-md;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+}
+
+.flag {
+  border-radius: vars.$border-radius-sm;
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+}
+
+.countryName {
+  color: vars.$secondary-light;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 21px;
+  }
+
+  h4 {
+    color: vars.$secondary-light;
+    min-width: 120px;
+    text-align: right;
+    margin: 0;
+
+    @media (min-width: 768px) {
+      min-width: 200px;
+    }
+  }
+
+  p {
+    color: vars.$secondary-light;
+    margin: 0;
+    flex: 1;
+    font-weight: 800;
+  }
+}

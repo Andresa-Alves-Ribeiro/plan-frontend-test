@@ -15,6 +15,7 @@ export interface Country {
   };
   capital: string[];
   region: string;
+  subregion: string;
   languages: { [key: string]: string };
   flags: {
     png: string;

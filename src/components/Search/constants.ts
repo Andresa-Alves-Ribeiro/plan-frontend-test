@@ -8,7 +8,7 @@ export const LANGUAGES = [
   { code: 'my', name: 'Birmanês' },
   { code: 'ca', name: 'Catalão' },
   { code: 'zh', name: 'Chinês' },
-  { code: 'hr', name: 'Croata' },
+  { code: 'hrv', name: 'Croata' },
   { code: 'cs', name: 'Tcheco' },
   { code: 'da', name: 'Dinamarquês' },
   { code: 'nl', name: 'Holandês' },

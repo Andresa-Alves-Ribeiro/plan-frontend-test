@@ -2,6 +2,7 @@ import React from 'react'
 
 import Image from 'next/image'
 
+import { Button } from '@/components/Button'
 import { useCountriesContext } from '@/contexts/CountriesContext'
 import { Country } from '@/services/countries'
 import { getContinentImage, getDisplayRegion } from '@/utils/continentMappings'
@@ -53,9 +54,9 @@ export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
         </div>
       </div>
 
-      <button className={`${styles.cardCountry__button} text-white font-bold text-sm italic rounded-full px-4 py-2`}>
+      <Button href={`/country/${country.name.common}`}>
         Ver mais
-      </button>
+      </Button>
     </div>
   )
 }
