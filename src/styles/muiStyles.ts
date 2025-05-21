@@ -33,31 +33,27 @@ export const outlinedInputStyles = {
 export const languageSelectStyles = {
   PaperProps: {
     sx: {
-      backgroundColor: '#FFFFFF',
-      zIndex: 1500,
+      backgroundColor: '#F58220',
       '& .MuiMenuItem-root': {
-        color: '#F58220',
-        cursor: 'pointer',
+        color: 'white',
         '&:hover': {
-          backgroundColor: 'rgba(245, 130, 32, 0.1)',
-        },
+          backgroundColor: 'rgba(255, 255, 255, 0.1)'
+        }
       },
       '&::-webkit-scrollbar': {
-        width: '8px',
+        width: '8px'
       },
       '&::-webkit-scrollbar-track': {
-        background: '#FFFFFF',
+        background: '#F58220'
       },
       '&::-webkit-scrollbar-thumb': {
-        background: 'rgba(245, 130, 32, 0.5)',
-        borderRadius: '4px',
+        background: '#FFFFFF',
+        borderRadius: '4px'
       },
       '&::-webkit-scrollbar-button': {
-        display: 'block',
-        height: '8px',
-        background: '#FFFFFF',
+        display: 'none'
       }
-    },
+    }
   },
   sx: {
     cursor: 'pointer',

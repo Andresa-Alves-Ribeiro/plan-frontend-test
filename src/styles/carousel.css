@@ -199,3 +199,48 @@
 @media (max-width: 1023px) {
   /* Removendo as regras de posicionamento das setas */
 }
+
+@media (min-width: 1680px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  .slick-slide > div {
+    padding: 0 8px;
+  }
+
+  .slick-track {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 1800px;
+  }
+
+  .slick-slide > div {
+    padding: 0 10px;
+  }
+
+  .slick-track {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 2200px;
+  }
+
+  .slick-slide > div {
+    padding: 0 12px;
+  }
+
+  .slick-track {
+    gap: 24px;
+  }
+}

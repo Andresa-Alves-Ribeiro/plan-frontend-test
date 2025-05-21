@@ -16,7 +16,7 @@ interface CountryGridProps {
 }
 
 const Container = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+  <div className="w-full xl:w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
     {children}
   </div>
 )
@@ -60,11 +60,11 @@ export const CountryGrid = ({ countries }: CountryGridProps) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     // Se não houver filtros ativos, mostra 2 linhas apenas em desktop
-    rows: hasActiveFilters ? 1 : isDesktop ? 2 : 2,
+    rows: hasActiveFilters ? 1 : 2,
     slidesPerRow: 1,
-    dots: isDesktop, // Only show dots on desktop
-    arrows: true, // Ensure arrows are always visible
-    slidesToShow: width < 640 ? 1 : width < 1024 ? 1 : 1,
+    dots: isDesktop,
+    arrows: true,
+    slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots: React.ReactNode) => (
       <div className="slick-dots-container">
@@ -76,14 +76,12 @@ export const CountryGrid = ({ countries }: CountryGridProps) => {
     )
   }
 
-  // Se não houver países, retorna mensagem
   if (countries.length === 0) {
     return <div className="flex justify-center">
       <p className="text-black font-bold text-xl">Nenhum país encontrado</p>
     </div>
   }
 
-  // Se houver apenas um país, renderiza sem o Slider
   if (countries.length === 1) {
     return (
       <Container>
@@ -94,7 +92,6 @@ export const CountryGrid = ({ countries }: CountryGridProps) => {
     )
   }
 
-  // Ordena os países por nome
   const sortedCountries = [...countries].sort((a, b) =>
     a.name.common.localeCompare(b.name.common)
   )
