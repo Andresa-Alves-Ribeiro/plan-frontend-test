@@ -1,6 +1,7 @@
 .slick-slider {
   width: 100%;
   position: relative;
+  padding-bottom: 60px;
 }
 
 .slick-list {
@@ -35,10 +36,10 @@
 }
 
 .dot-pagination {
-  width: 15px !important;
-  height: 15px !important;
+  width: 12px !important;
+  height: 12px !important;
   border-radius: 50%;
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.5) !important;
   border: 2px solid #ffffff !important;
   transition: all 0.2s;
 }
@@ -46,7 +47,8 @@
 .slick-dots li.slick-active .dot-pagination {
   opacity: 1;
   background: #ffffff !important;
-  border: none !important;
+  border: 2px solid #ffffff !important;
+  transform: scale(1.2);
 }
 
 .slick-dots li button:before {
@@ -62,7 +64,7 @@
 .slick-prev,
 .slick-next {
   position: absolute !important;
-  bottom: -40px !important;
+  bottom: 0 !important;
   top: auto !important;
   width: 50px !important;
   height: 50px !important;
@@ -72,7 +74,7 @@
   background: transparent !important;
   border: 3px solid white !important;
   border-radius: 20px !important;
-  cursor: pointer;
+  cursor: pointer !important;
   z-index: 1;
 }
 
@@ -85,14 +87,15 @@
 .slick-next svg {
   width: 20px;
   height: 20px;
+  cursor: pointer !important;
 }
 
 .slick-prev {
-  left: calc(50% - 650px) !important;
+  left: 20px !important;
 }
 
 .slick-next {
-  right: calc(50% - 650px) !important;
+  right: 20px !important;
 }
 
 /* Container dos dots */
@@ -102,6 +105,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 20px !important;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -110,14 +121,126 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1023px) {
+  .slick-slider {
+    padding-bottom: 120px;
+  }
+
   .slick-track {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 40px !important;
+    height: 40px !important;
+    bottom: 30px !important;
+  }
+
+  .slick-prev svg,
+  .slick-next svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .slick-prev {
+    left: 50% !important;
+    transform: translateX(-50px) !important;
+  }
+
+  .slick-next {
+    right: 50% !important;
+    transform: translateX(50px) !important;
   }
 }
 
 @media (max-width: 480px) {
+  .slick-slider {
+    padding-bottom: 65px;
+  }
+
   .slick-track {
     grid-template-columns: 1fr !important;
+  }
+
+  .dot-pagination {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .slick-dots-container {
+    margin-top: 0.5rem;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 35px !important;
+    height: 35px !important;
+    bottom: 0 !important;
+  }
+
+  .slick-prev svg,
+  .slick-next svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .slick-prev {
+    left: 50% !important;
+    transform: translateX(-40px) !important;
+  }
+
+  .slick-next {
+    right: 50% !important;
+    transform: translateX(40px) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Removendo as regras de posicionamento das setas */
+}
+
+@media (min-width: 1680px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  .slick-slide > div {
+    padding: 0 8px;
+  }
+
+  .slick-track {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 1800px;
+  }
+
+  .slick-slide > div {
+    padding: 0 10px;
+  }
+
+  .slick-track {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .slick-slider {
+    margin: 0 auto;
+    max-width: 2200px;
+  }
+
+  .slick-slide > div {
+    padding: 0 12px;
+  }
+
+  .slick-track {
+    gap: 24px;
   }
 }

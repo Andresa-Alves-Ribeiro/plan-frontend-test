@@ -12,7 +12,7 @@ interface CardCountryProps {
   country: Country;
 }
 
-export const CardCountry: React.FC<CardCountryProps> = ({ country }) => {
+export const CardCountry = ({ country }: CardCountryProps) => {
   const countryName = country.translations?.por?.common || country.name.common
   const displayRegion = getDisplayRegion(country.region, country.name.common)
 

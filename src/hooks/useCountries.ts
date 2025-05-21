@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 
-import { Region } from '../components/Search/types'
+import { Region } from '../components/CountryFilters/types'
 import { Country, countriesService } from '../services/countries'
 import { regionTranslations, northAmericanCountries } from '../types/continent'
 

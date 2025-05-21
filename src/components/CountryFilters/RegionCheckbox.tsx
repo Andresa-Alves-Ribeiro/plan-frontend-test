@@ -12,7 +12,7 @@ interface RegionCheckboxProps {
   onChange: (region: Region) => void;
 }
 
-export const RegionCheckbox: React.FC<RegionCheckboxProps> = ({ region, checked, onChange }) => (
+export const RegionCheckbox = ({ region, checked, onChange }: RegionCheckboxProps) => (
   <FormControlLabel
     control={
       <Checkbox

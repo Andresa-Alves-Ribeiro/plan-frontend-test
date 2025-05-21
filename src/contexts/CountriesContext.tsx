@@ -4,7 +4,7 @@ import { useCountries } from '../hooks/useCountries'
 
 const CountriesContext = createContext<ReturnType<typeof useCountries> | undefined>(undefined)
 
-export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CountriesProvider = ({ children }: { children: React.ReactNode }) => {
   const countriesData = useCountries()
 
   return (
